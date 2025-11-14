@@ -1,25 +1,32 @@
 # Import the QueryBase class
 #### YOUR CODE HERE
+from query_base import QueryBase
 
 # Import dependencies needed for sql execution
 # from the `sql_execution` module
 #### YOUR CODE HERE
+from sqlite3 import connect
+from pathlib import Path
+from functools import wraps
+import pandas as pd
 
 # Define a subclass of QueryBase
 # called Employee
 #### YOUR CODE HERE
+class Employee(QueryBase):
 
     # Set the class attribute `name`
     # to the string "employee"
     #### YOUR CODE HERE
-
+    Employee.name = 'employee'
 
     # Define a method called `names`
     # that receives no arguments
     # This method should return a list of tuples
     # from an sql execution
     #### YOUR CODE HERE
-        
+    def names(self):
+     
         # Query 3
         # Write an SQL query
         # that selects two columns 
@@ -28,13 +35,16 @@
         # This query should return the data
         # for all employees in the database
         #### YOUR CODE HERE
+        return f"""
+        'SELECT CONCAT(first_name,' ',last_name) AS full_name, employee_id FROM employee_events.db.employee'
+        """
     
-
     # Define a method called `username`
     # that receives an `id` argument
     # This method should return a list of tuples
     # from an sql execution
     #### YOUR CODE HERE
+    def username(self, id):
         
         # Query 4
         # Write an SQL query
@@ -43,8 +53,10 @@
         # to only return the full name of the employee
         # with an id equal to the id argument
         #### YOUR CODE HERE
-
-
+        return f"""
+        'SELECT full_name FROM f'{Employee.name}' WHERE {self.name}.{self.name}_id = {id}
+        """
+        
     # Below is method with an SQL query
     # This SQL query generates the data needed for
     # the machine learning model.
@@ -63,3 +75,5 @@
                         USING({self.name}_id)
                     WHERE {self.name}.{self.name}_id = {id}
                 """
+    data = model_data()
+    df = pd.dataframe(data)

@@ -1,27 +1,30 @@
 # Import any dependencies needed to execute sql queries
-# YOUR CODE HERE
+from sqlite3 import connect
+import pandas as pd
 
 # Define a class called QueryBase
 # Use inheritance to add methods
 # for querying the employee_events database.
-# YOUR CODE HERE
+class QueryBase(pandas_query):
 
     # Create a class attribute called `name`
     # set the attribute to an empty string
-    # YOUR CODE HERE
+    QueryBase.name = ''
 
     # Define a `names` method that receives
     # no passed arguments
-    # YOUR CODE HERE
+    def names(self):
         
         # Return an empty list
-        # YOUR CODE HERE
+        return QueryBase.name
 
 
     # Define an `event_counts` method
     # that receives an `id` argument
     # This method should return a pandas dataframe
-    # YOUR CODE HERE
+    def event_counts(self, id):
+        df = []
+        return df
 
         # QUERY 1
         # Write an SQL query that groups by `event_date`
@@ -31,13 +34,15 @@
         # Use f-string formatting to set the name
         # of id columns used for joining
         # order by the event_date column
-        # YOUR CODE HERE
+        #'SELECT event_date, sum(*) as pos_events, sum(*) as neg_events FROM f'{QueryBase.name}' GROUP BY event_date ORDER BY event_date DESC'
+        'SELECT event_date, sum(positive_events) as pos_events, sum(negative_events) as neg_events FROM f'{QueryBase.name}' GROUP BY event_date ORDER BY event_date DESC'
             
-    
-
     # Define a `notes` method that receives an id argument
     # This function should return a pandas dataframe
     # YOUR CODE HERE
+    def notes(self, id):
+        df = []
+        return df
 
         # QUERY 2
         # Write an SQL query that returns `note_date`, and `note`
@@ -47,4 +52,5 @@
         # so the query returns the notes
         # for the table name in the `name` class attribute
         # YOUR CODE HERE
+        'SELECT note_date, note FROM f'{QueryBase.name}'
 
