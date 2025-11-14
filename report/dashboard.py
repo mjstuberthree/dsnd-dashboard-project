@@ -34,7 +34,7 @@ class ReportDropdown(Dropdown):
     # as the Report parent class's method
     #### YOUR CODE HERE  
     def build_component(self, entity_id, model):
-    parent_data = super().build_component(entity_id, model)
+        parent_data = super().build_component(entity_id, model)
 
         #  Set the `label` attribute so it is set
         #  to the `name` attribute for the model
@@ -51,7 +51,7 @@ class ReportDropdown(Dropdown):
     # as the parent class method
     #### YOUR CODE HERE
     def component_data(self, entity_id, model):
-    parent_data = super().component_data(entity_id, model)
+        parent_data = super().component_data(entity_id, model)
 
         # Using the model argument
         # call the employee_events method
@@ -83,7 +83,7 @@ class Header(BaseComponent):
     # as the parent class
     #### YOUR CODE HERE
     def build_component(self, entity_id, model):
-    parent_data = super().build_component(entity_id, model)
+        parent_data = super().build_component(entity_id, model)
         
         # Using the model argument for this method
         # return a fasthtml H1 objects
@@ -106,7 +106,7 @@ class LineChart(MatplotlibViz):
     # method. Use the same parameters as the parent
     #### YOUR CODE HERE
     def visualization(self, entity_id, model):
-    parent_data = super().visualization(entity_id, model)
+        parent_data = super().visualization(entity_id, model)
     
         # Pass the `asset_id` argument to
         # the model's `event_counts` method to
@@ -195,7 +195,7 @@ class BarChart(MatplotlibViz):
     # Use the same parameters as the parent
     #### YOUR CODE HERE
     def visualization(self, entity_id, model):
-    parent_data = super().visualization(entity_id, model)
+        parent_data = super().visualization(entity_id, model)
 
         # Using the model and asset_id arguments
         # pass the `asset_id` to the `.model_data` method
@@ -292,7 +292,7 @@ class NotesTable(DataTable):
     # using the same parameters as the parent class
     #### YOUR CODE HERE
     def component_data(self, entity_id, model):
-    parent_data = super().component_data(entity_id, model)
+        parent_data = super().component_data(entity_id, model)
         
         # Using the model and entity_id arguments
         # pass the entity_id to the model's .notes 
